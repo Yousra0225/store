@@ -47,6 +47,17 @@ public class Article {
     public int getSalesCount() { return this.salesCount; }
     public String getDescription() { return this.description; }
 
-    
+    /**
+     * Setters
+     */
+    public void setId(UUID id) { this.id = id; }
+    public void setFirstName(String fName){this.firstname=fName;}
+    public void setLastName(String lName){this.lastname=lName;}
+    public void setPrice(double price) { this.price = price; }
+    public void setStockQuantity(int stockQuantity) { this.stockQuantity = stockQuantity; }
+    public void setSalesCount(int salesCount) { this.salesCount = salesCount; }
+    public void setDescription(String description) { this.description = description; }
+    public void setImages(List<Image> images) { this.images = images; }
+}
 
 }
