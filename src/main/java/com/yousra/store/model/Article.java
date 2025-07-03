@@ -36,8 +36,17 @@ public class Article {
      */
     public Article(){}
 
-   
+    /**
+     * Getters
+     */
+    public UUID getId(){return this.id}
+    public String getFirstnameName() { return this.firstname; }
+    public String getLastnameName() { return this.lastname; }
+    public double getPrice(){return this.price;}
+    public int getStockQuantity() { return this.stockQuantity; }
+    public int getSalesCount() { return this.salesCount; }
+    public String getDescription() { return this.description; }
 
-
+    
 
 }
