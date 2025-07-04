@@ -71,4 +71,10 @@ public class Article {
                 '}';
     }
 
+    /**
+     * Method to generate hashcode
+     * @return hashcode
+     */
+    public int hashCode() {return Objects.hash(id);}
+
 }
