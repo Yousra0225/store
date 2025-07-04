@@ -7,7 +7,7 @@ import java.util.*;
 @Entity
 public class Article {
     @Id 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(nullable = false, length = 50)
@@ -26,13 +26,13 @@ public class Article {
     private String description;
 
     // Modélisation de : Un article a plusieurs images
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images ;
 
     /**
      * Contructeurs de la class
      */
-    public Article(){}
+    public Article(){this.images = new ArrayList<>();}
 
     /**
      * Getters
@@ -55,5 +55,20 @@ public class Article {
     public void setSalesCount(int salesCount) { this.salesCount = salesCount; }
     public void setDescription(String description) { this.description = description; }
     public void setImages(List<Image> images) {this.images = images;}
+
+    /**
+     * ToString method
+     * @return article
+     */
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", stockQuantity=" + stockQuantity +
+                ", salesCount=" + salesCount +
+                ", description='" + description + '\'' +
+                '}';
+    }
 
 }
