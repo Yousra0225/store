@@ -1,5 +1,18 @@
 # Règles de Gestion
 
+## Utilisateur 
+- **RG1 :** Un utilisateur doit avoir : 
+    - Un nom
+    - Un prénom
+    - Une addresse mail unique
+    - Une addresse postal
+    - Un moyen de paiement
+    - Un mot de passe 
+- **RG8 :** Un utilisateur peut se connecter via son addresse mail et mot de passe
+- **RG8 :** Un utilisateur peut ajouter des [articles](#article) danc son panier
+- **RG8 :** Un utilisateur peut passer une commande à partir de son panier
+- **RG8 :** Un utilisateur peut consulter l'historique de ses commandes
+
 ## Article
 - **RG1 :** Un article doit avoir un nom.
 - **RG2 :** Un article doit avoir un prix.
