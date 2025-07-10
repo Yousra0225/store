@@ -17,4 +17,4 @@ jobs:
         run: docker build -t  compile-project .
 
       - name: Lancer les tests
-        run: mvn test
+        run: docker run compile-project
