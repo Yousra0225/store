@@ -58,5 +58,19 @@ public class User {
     public void setEmail(String email) {this.emailAddress = email;}
     public void setPostalAddress(String postalAddress) {this.postalAddress = postalAddress;}
     public void setPassword(String password) {this.password = password;}
+
+    /**
+     * ToString method
+     * @return article
+     */
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", first name='" + firstName + '\'' +
+                ", last name=" + lastName +
+                ", email address=" + emailAddress +
+                ", postal address=" + postalAddress  +
+                '}';
+    }
 }
 }
