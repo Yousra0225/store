@@ -38,4 +38,17 @@ public class User {
         this.password = password;
 
     }
+
+    /**
+     * Getters
+     * @return constructor properties
+     */
+    public UUID getId() {return id;}
+    public String getFirstName() { return firstName;}
+    public String getLastName() {return lastName;}
+    public String getEmail() {return this.emailAddress;}
+    public String getPostalAddress() {return postalAddress;}
+
+
+}
 }
