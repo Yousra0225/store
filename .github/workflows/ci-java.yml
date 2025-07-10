@@ -1,0 +1,26 @@
+name: CI - Spring Boot Java
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cloner le projet
+        uses: actions/checkout@v3
+
+      - name: Installer Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '24'
+
+      - name: Build avec Maven
+        run: mvn clean install
+
+      - name: Lancer les tests
+        run: mvn test
