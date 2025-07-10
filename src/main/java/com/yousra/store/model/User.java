@@ -49,6 +49,14 @@ public class User {
     public String getEmail() {return this.emailAddress;}
     public String getPostalAddress() {return postalAddress;}
 
-
+    /**
+     * Setters
+     * @params constructor properties
+     */
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setEmail(String email) {this.emailAddress = email;}
+    public void setPostalAddress(String postalAddress) {this.postalAddress = postalAddress;}
+    public void setPassword(String password) {this.password = password;}
 }
 }
