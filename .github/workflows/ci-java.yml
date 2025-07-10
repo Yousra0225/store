@@ -13,14 +13,8 @@ jobs:
     steps:
       - name: Cloner le projet
         uses: actions/checkout@v3
-
-      - name: Installer Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '24'
-
-      - name: Build avec Maven
-        run: mvn clean install
+      - name: compile java project
+        run: docker build -t  compile-project .
 
       - name: Lancer les tests
         run: mvn test
