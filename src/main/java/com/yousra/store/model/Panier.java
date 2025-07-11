@@ -11,5 +11,5 @@ public class Panier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    
+
 }
