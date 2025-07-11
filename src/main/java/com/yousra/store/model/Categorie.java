@@ -15,5 +15,5 @@ public class Categorie {
 
     @OneToMany(mappedBy = "categorie")
     private List<Article> articles;
-    
+
 }
