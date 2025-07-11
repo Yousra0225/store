@@ -27,7 +27,10 @@ public class LigneArticle {
     @ManyToOne
     private Command commande;
 
-    
+    public LigneArticle(int quantite, BigDecimal prixUnitaire) {
+        this.quantite = quantite;
+        this.prixUnitaire = prixUnitaire;
+    }
 
 
 }
