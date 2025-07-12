@@ -49,5 +49,6 @@ public class LigneArticle {
     public void setArticle(Article article){this.article = article;}
     public void setQuantity(BigDecimal quantity){this.quantity = quantity;}
     public void setLignePrice(Panier panier){this.panier = panier;}
+    public void setCommand(Command command){this.command = command;}
 
 }
