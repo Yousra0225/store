@@ -46,5 +46,6 @@ public class LigneArticle {
      * Setters
      */
     public void setId(UUID id){this.id = id;}
+    public void setArticle(Article article){this.article = article;}
 
 }
