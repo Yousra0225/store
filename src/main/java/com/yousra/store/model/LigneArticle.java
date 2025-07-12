@@ -32,7 +32,10 @@ public class LigneArticle {
         this.lignePrice = lignePrice;
     }
 
-    
+    /**
+     * Getters
+     */
+    public UUID getId(){return this.id;}
 
 
 }
