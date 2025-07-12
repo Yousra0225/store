@@ -17,20 +17,22 @@ public class LigneArticle {
     @ManyToOne
     private Article article;
 
-    private int quantite;
+    private int quantity;
 
-    private BigDecimal prixUnitaire;
+    private BigDecimal lignePrice;
 
     @ManyToOne
     private Panier panier;
 
     @ManyToOne
-    private Command commande;
+    private Command command;
 
-    public LigneArticle(int quantite, BigDecimal prixUnitaire) {
-        this.quantite = quantite;
-        this.prixUnitaire = prixUnitaire;
+    public LigneArticle(int quantity, BigDecimal lignePrice) {
+        this.quantity = quantity;
+        this.lignePrice = lignePrice;
     }
+
+    
 
 
 }
