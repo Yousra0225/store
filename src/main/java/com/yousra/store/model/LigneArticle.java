@@ -37,6 +37,7 @@ public class LigneArticle {
      */
     public UUID getId(){return this.id;}
     public Article getArticle(){return this.article;}
+    public int getQuantity(){return this.quantity;}
 
 
 }
