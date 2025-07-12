@@ -36,6 +36,7 @@ public class LigneArticle {
      * Getters
      */
     public UUID getId(){return this.id;}
+    public Article getArticle(){return this.article;}
 
 
 }
