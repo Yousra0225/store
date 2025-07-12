@@ -40,6 +40,7 @@ public class LigneArticle {
     public int getQuantity(){return this.quantity;}
     public BigDecimal getLignePrice(){return this.lignePrice;}
     public Panier getPanier(){return this.panier;}
+    public Command getCommand(){return this.command;}
 
 
 }
