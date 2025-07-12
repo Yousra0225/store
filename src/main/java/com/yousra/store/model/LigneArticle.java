@@ -42,5 +42,9 @@ public class LigneArticle {
     public Panier getPanier(){return this.panier;}
     public Command getCommand(){return this.command;}
 
+    /**
+     * Setters
+     */
+    public void setId(UUID id){this.id = id;}
 
 }
