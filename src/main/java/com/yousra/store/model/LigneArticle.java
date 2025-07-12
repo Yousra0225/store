@@ -47,5 +47,6 @@ public class LigneArticle {
      */
     public void setId(UUID id){this.id = id;}
     public void setArticle(Article article){this.article = article;}
+    public void setQuantity(BigDecimal quantity){this.quantity = quantity;}
 
 }
