@@ -51,7 +51,7 @@ public class UserService {
     }
 
     public UserDto findByEmail(String email) {
-        return toDto(userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Utilisateur avec email " + email)));
+        return toDto(userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé : " + email)));
     }
 
     public User getEntityById(UUID id) {
@@ -59,7 +59,7 @@ public class UserService {
     }
 
     public User getEntityByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Utilisateur", email));
+        return userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé : " + email));
     }
 
     private static UserDto toDto(User u) {

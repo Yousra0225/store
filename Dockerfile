@@ -1,7 +1,21 @@
-FROM maven:3.8.4-openjdk-17
-WORKDIR /app-store
-COPY pom.xml ./
-RUN mvn dependency:go-offline
+# Stage 1 : build
+FROM maven:3.9-eclipse-temurin-17-alpine AS build
+WORKDIR /app
+
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
 COPY src ./src
-EXPOSE 6000
-CMD ["mvn", "test"]
+RUN mvn package -DskipTests -B
+
+# Stage 2 : runtime
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+RUN adduser -D -s /bin/sh appuser
+USER appuser
+
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
