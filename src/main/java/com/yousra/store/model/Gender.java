@@ -1,4 +1,5 @@
 package com.yousra.store.model;
 
-public class Gender {
+public enum Gender {
+    M, F, OTHER
 }

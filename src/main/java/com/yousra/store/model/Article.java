@@ -25,9 +25,12 @@ public class Article {
     @Column (nullable = false, length = 150)
     private String description;
 
-    // Modélisation de : Un article a plusieurs images
+    @ManyToOne
+    @JoinColumn(name = "categorie_id")
+    private Categorie categorie;
+
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Image> images ;
+    private List<Image> images;
 
     /**
      * Contructeurs de la class
@@ -54,7 +57,7 @@ public class Article {
     public void setStockQuantity(int stockQuantity) { this.stockQuantity = stockQuantity; }
     public void setSalesCount(int salesCount) { this.salesCount = salesCount; }
     public void setDescription(String description) { this.description = description; }
-    public void setImages(List<Image> images) {this.images = images;}
+    public void setImages(List<Image> images) { this.images = images; }
 
     /**
      * ToString method
