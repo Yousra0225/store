@@ -11,5 +11,5 @@ public interface PanierRepository extends JpaRepository<Panier, UUID> {
 
     Optional<Panier> findByUser(User user);
 
-    Optional<Panier> findByUserId(UUID userId);
+    Optional<Panier> findByUser_Id(UUID userId);
 }
