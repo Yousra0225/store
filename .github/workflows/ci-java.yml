@@ -17,10 +17,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
+          cache: 'maven'
 
-      - name: Compiler et lancer les tests
-        run: mvn verify -B
+      - name: Compiler et tests unitaires
+        run: ./mvnw test -B --no-transfer-progress
+
+      - name: Tests d'intégration
+        run: ./mvnw verify -DskipTests -B --no-transfer-progress
 
       - name: Build image Docker
         run: docker build -t store:latest .

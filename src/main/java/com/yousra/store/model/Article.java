@@ -46,7 +46,9 @@ public class Article {
     public int getStockQuantity() { return this.stockQuantity; }
     public int getSalesCount() { return this.salesCount; }
     public String getDescription() { return this.description; }
-    public List<Image> getImages() {return images;}
+    public List<Image> getImages() { return images; }
+    public Categorie getCategorie() { return categorie; }
+    public void setCategorie(Categorie categorie) { this.categorie = categorie; }
 
     /**
      * Setters

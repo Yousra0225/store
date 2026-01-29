@@ -5,10 +5,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 public class AppUserDetails implements UserDetails {
 
@@ -21,7 +21,8 @@ public class AppUserDetails implements UserDetails {
         this.id = user.getId();
         this.email = user.getEmail();
         this.passwordHash = user.getPasswordHash();
-        this.authorities = Stream.of("ROLE_USER").map(SimpleGrantedAuthority::new).toList();
+        this.authorities = new ArrayList<>();
+        this.authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     public UUID getId() { return id; }
