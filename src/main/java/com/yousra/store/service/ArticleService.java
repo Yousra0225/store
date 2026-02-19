@@ -6,8 +6,10 @@ import com.yousra.store.exception.ResourceNotFoundException;
 import com.yousra.store.model.Article;
 import com.yousra.store.model.Categorie;
 import com.yousra.store.model.Image;
+import com.yousra.store.model.Review;
 import com.yousra.store.repository.ArticleRepository;
 import com.yousra.store.repository.CategorieRepository;
+import com.yousra.store.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,10 +22,12 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
     private final CategorieRepository categorieRepository;
+    private final ReviewRepository reviewRepository;
 
-    public ArticleService(ArticleRepository articleRepository, CategorieRepository categorieRepository) {
+    public ArticleService(ArticleRepository articleRepository, CategorieRepository categorieRepository, ReviewRepository reviewRepository) {
         this.articleRepository = articleRepository;
         this.categorieRepository = categorieRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     public List<ArticleDto> findAll() {
@@ -71,6 +75,8 @@ public class ArticleService {
     }
 
     private ArticleDto toDto(Article a) {
+        List<Review> reviews = reviewRepository.findByArticleId(a.getId());
+        Double avgRating = reviews.isEmpty() ? 0.0 : reviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
         return new ArticleDto(
                 a.getId(),
                 a.getName(),
@@ -80,7 +86,8 @@ public class ArticleService {
                 a.getDescription(),
                 a.getCategorie() != null ? a.getCategorie().getId() : null,
                 a.getCategorie() != null ? a.getCategorie().getName() : null,
-                a.getImages().stream().map(Image::getUrl).toList()
+                a.getImages().stream().map(Image::getUrl).toList(),
+                avgRating
         );
     }
 }

@@ -13,5 +13,6 @@ public record ArticleDto(
     String description,
     UUID categorieId,
     String categorieName,
-    List<String> imageUrls
+    List<String> imageUrls,
+    Double averageRating
 ) {}
