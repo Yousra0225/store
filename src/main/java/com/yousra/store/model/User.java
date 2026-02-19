@@ -2,7 +2,9 @@ package com.yousra.store.model;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -38,6 +40,14 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Command> commands = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+        name = "user_wishlist",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "article_id")
+    )
+    private Set<Article> wishlist = new HashSet<>();
+
     public User() {}
 
     public User(String firstName, String lastName, String email, String postalAddress, String passwordHash) {
@@ -66,4 +76,6 @@ public class User {
     public void setPanier(Panier panier) { this.panier = panier; }
     public List<Command> getCommands() { return commands; }
     public void setCommands(List<Command> commands) { this.commands = commands; }
+    public Set<Article> getWishlist() { return wishlist; }
+    public void setWishlist(Set<Article> wishlist) { this.wishlist = wishlist; }
 }
