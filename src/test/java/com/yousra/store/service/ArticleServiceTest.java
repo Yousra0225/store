@@ -7,6 +7,7 @@ import com.yousra.store.model.Article;
 import com.yousra.store.model.Categorie;
 import com.yousra.store.repository.ArticleRepository;
 import com.yousra.store.repository.CategorieRepository;
+import com.yousra.store.repository.ReviewRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,6 +32,9 @@ class ArticleServiceTest {
 
     @Mock
     private CategorieRepository categorieRepository;
+
+    @Mock
+    private ReviewRepository reviewRepository;
 
     @InjectMocks
     private ArticleService articleService;
