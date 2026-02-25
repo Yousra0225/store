@@ -2,17 +2,18 @@ package com.yousra.store.controller;
 
 import com.yousra.store.dto.ReviewCreateDto;
 import com.yousra.store.dto.ReviewDto;
+import com.yousra.store.security.AppUserDetails;
 import com.yousra.store.service.ReviewService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/reviews")
+@RequestMapping("/api/reviews")
 public class ReviewController {
 
     private final ReviewService reviewService;
@@ -22,11 +23,8 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ResponseEntity<ReviewDto> createReview(Authentication auth, @RequestBody ReviewCreateDto dto) {
-        if (auth == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(reviewService.createReview(auth.getName(), dto));
+    public ResponseEntity<ReviewDto> createReview(@AuthenticationPrincipal AppUserDetails user, @RequestBody ReviewCreateDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(reviewService.createReview(user.getId(), dto));
     }
 
     @GetMapping("/article/{articleId}")

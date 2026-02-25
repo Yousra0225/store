@@ -27,9 +27,9 @@ public class WishlistService {
     }
 
     @Transactional
-    public void addToWishlist(String userEmail, UUID articleId) {
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userEmail));
+    public void addToWishlist(UUID userId, UUID articleId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userId));
         Article article = articleRepository.findById(articleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Article", articleId));
         
@@ -38,17 +38,17 @@ public class WishlistService {
     }
 
     @Transactional
-    public void removeFromWishlist(String userEmail, UUID articleId) {
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userEmail));
+    public void removeFromWishlist(UUID userId, UUID articleId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userId));
         
         user.getWishlist().removeIf(a -> a.getId().equals(articleId));
         userRepository.save(user);
     }
 
-    public List<ArticleDto> getWishlist(String userEmail) {
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userEmail));
+    public List<ArticleDto> getWishlist(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userId));
         
         return user.getWishlist().stream()
                 .map(a -> articleService.findById(a.getId()))

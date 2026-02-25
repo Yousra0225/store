@@ -32,9 +32,9 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewDto createReview(String userEmail, ReviewCreateDto dto) {
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userEmail));
+    public ReviewDto createReview(UUID userId, ReviewCreateDto dto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé: " + userId));
         
         Article article = articleRepository.findById(dto.articleId())
                 .orElseThrow(() -> new ResourceNotFoundException("Article", dto.articleId()));
